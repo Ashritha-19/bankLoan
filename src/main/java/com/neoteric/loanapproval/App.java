@@ -1,9 +1,6 @@
 package com.neoteric.loanapproval;
 
-import com.neoteric.loanapproval.model.Address;
-import com.neoteric.loanapproval.model.LoanApplication;
-import com.neoteric.loanapproval.model.PersonalDetails;
-import com.neoteric.loanapproval.model.SalaryInfo;
+import com.neoteric.loanapproval.model.*;
 import com.neoteric.loanapproval.service.ApplicationService;
 import com.neoteric.loanapproval.service.LoanAmountService;
 import com.neoteric.loanapproval.service.LoanApprovalService;
@@ -23,6 +20,7 @@ public class App
         address.flatNo="123";
         address.pincode="5656";
         address.state="TG";
+
         PersonalDetails personalDetails = new PersonalDetails();
         personalDetails.fullName="DINESH";
         personalDetails.dob="12/12/12";
@@ -41,9 +39,9 @@ public class App
         applicationService.getApplication(loanApplication);
 
         LoanAmountService loanAmountService = new LoanAmountService();
-        loanAmountService.getLoanAmount(loanApplication);
+        LoanDetails loanDetails = loanAmountService.getLoanAmount(loanApplication);
 
-        LoanApprovalService loanApprovalService = new LoanApprovalService();
-        loanApprovalService.getLoanApproval(12);
+        LoanApprovalService loanApprovalService = new LoanApprovalService(loanAmountService);
+        loanApprovalService.getLoanApproval(loanDetails, 12);
     }
 }

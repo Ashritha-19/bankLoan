@@ -10,11 +10,11 @@ public class LoanAmountService {
 
     public LoanDetails getLoanAmount(LoanApplication loanApplication){
           balanceAmount=(loanApplication.salaryInfo.salaryLpa/12)-loanApplication.salaryInfo.expenses;
-         LoanDetails loanDetails = new LoanDetails();
-      loanDetails.loanAmount=balanceAmount*10;
-      loanDetails.interestRate=0.07;
-      loanDetails.totalAmount=loanDetails.loanAmount*loanDetails.interestRate;
-        System.out.println(loanDetails.totalAmount);
-      return loanDetails;
+         loanDetail = new LoanDetails();
+      loanDetail.loanAmount=balanceAmount*10;
+      loanDetail.interestRate=0.07;
+      loanDetail.totalAmount=loanDetail.loanAmount*loanDetail.interestRate;
+        System.out.println(loanDetail.totalAmount);
+      return loanDetail;
     }
 }
